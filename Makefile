@@ -76,8 +76,8 @@
 # RELEASE is flags for release builds, this disables some debugging flags and
 # enforces build failure when warnings are encountered.
 # We want to error on everything to make sure we don't check in code with new warnings.
-RELEASE_FLAGS = -Werror
-WARNINGS = -Wall -Wextra
+# RELEASE_FLAGS = -Werror
+WARNINGS = -Wall -Wimplicit-fallthrough=0
 # Uncomment below to disable warnings
 #WARNINGS = -w
 DEBUGSYMS = -g
@@ -160,7 +160,7 @@ ifdef CROSS
   CXXMACHINE := $(shell $(CROSS)$(CXX) -dumpmachine)
 endif
 
-# Expand at reference time to avoid recursive reference
+-Wimplicit-fallthrough=0# Expand at reference time to avoid recursive reference
 OS_COMPILER := $(CXX)
 # Appears that the default value of $LD is unsuitable on most systems
 OS_LINKER := $(CXX)
